@@ -1,0 +1,1458 @@
+#!MC 1410
+$!VarSet |LFDSFN1| = '"2018.00.plt"'
+$!VarSet |LFDSVL1| = '"X, m" "Y, m" "Z, m" "Volume, m^3" "Aqueous Saturation" "Aqueous i-129 Concentration, 1/l"'
+$!VarSet |LFDSFN2| = '"layer.dat"'
+$!VarSet |LFDSVL2| = '"X, m" "Y, m" "Z, m" "Volume, m^3" "Aqueous Saturation" "Aqueous i-129 Concentration, 1/l" "Elevation, m"'
+$!SETSTYLEBASE FACTORY
+$!PLOTOPTIONS 
+  SUBDIVIDEALLCELLS = NO
+$!GLOBALPAPER 
+  PAPERSIZEINFO
+    {
+    LETTER
+      {
+      WIDTH = 8.5
+      HEIGHT = 11
+      LEFTHARDCLIPOFFSET = 0.125
+      RIGHTHARDCLIPOFFSET = 0.125
+      TOPHARDCLIPOFFSET = 0.125
+      BOTTOMHARDCLIPOFFSET = 0.125
+      }
+    }
+$!PAGE 
+  NAME = 'Untitled'
+  PAPERATTRIBUTES
+    {
+    BACKGROUNDCOLOR = WHITE
+    ISTRANSPARENT = YES
+    ORIENTPORTRAIT = NO
+    SHOWGRID = YES
+    SHOWRULER = NO
+    SHOWPAPER = NO
+    PAPERSIZE = LETTER
+    RULERSPACING = ONEINCH
+    PAPERGRIDSPACING = HALFINCH
+    REGIONINWORKAREA
+      {
+      X1 = 1
+      Y1 = 0.25
+      X2 = 10
+      Y2 = 8.25
+      }
+    }
+### Frame Number 1 ###
+$!READDATASET  '|LFDSFN1|'
+  INITIALPLOTTYPE = CARTESIAN3D
+  INCLUDETEXT = NO
+  INCLUDEGEOM = NO
+  ASSIGNSTRANDIDS = YES
+  VARLOADMODE = BYNAME
+  VARNAMELIST = '|LFDSVL1|'
+$!REMOVEVAR |LFDSVL1|
+$!REMOVEVAR |LFDSFN1|
+$!READDATASET  '|LFDSFN2|'
+  INITIALPLOTTYPE = CARTESIAN3D
+  INCLUDETEXT = NO
+  INCLUDEGEOM = NO
+  READDATAOPTION = APPEND
+  RESETSTYLE = NO
+  ASSIGNSTRANDIDS = YES
+  VARLOADMODE = BYNAME
+  VARNAMELIST = '|LFDSVL2|'
+$!REMOVEVAR |LFDSVL2|
+$!REMOVEVAR |LFDSFN2|
+$!CREATERECTANGULARZONE 
+  IMAX = 1
+  JMAX = 1
+  KMAX = 1
+  X1 = 84.75
+  Y1 = 488
+  Z1 = 200
+  X2 = 117.2
+  Y2 = 500
+  Z2 = 204.2
+  XVAR = 1
+  YVAR = 2
+  ZVAR = 3
+$!DELETEZONES  [11]
+$!CREATERECTANGULARZONE 
+  IMAX = 1
+  JMAX = 1
+  KMAX = 1
+  X1 = 84.75
+  Y1 = 480
+  Z1 = 124.2
+  X2 = 117.2
+  Y2 = 480
+  Z2 = 204.2
+  XVAR = 1
+  YVAR = 2
+  ZVAR = 3
+$!CREATERECTANGULARZONE 
+  IMAX = 100
+  JMAX = 100
+  KMAX = 100
+  X1 = 84.75
+  Y1 = 480
+  Z1 = 124.2
+  X2 = 117.2
+  Y2 = 480
+  Z2 = 204.2
+  XVAR = 1
+  YVAR = 2
+  ZVAR = 3
+$!DELETEZONES  [11]
+$!DELETEZONES  [11]
+$!CREATERECTANGULARZONE 
+  IMAX = 100
+  JMAX = 100
+  KMAX = 100
+  X1 = 84.75
+  Y1 = 488
+  Z1 = 200
+  X2 = 117.2
+  Y2 = 500.48
+  Z2 = 204.2
+  XVAR = 1
+  YVAR = 2
+  ZVAR = 3
+$!CREATERECTANGULARZONE 
+  IMAX = 100
+  JMAX = 100
+  KMAX = 100
+  X1 = 84.75
+  Y1 = 488
+  Z1 = 210
+  X2 = 117.2
+  Y2 = 500.48
+  Z2 = 204.2
+  XVAR = 1
+  YVAR = 2
+  ZVAR = 3
+$!CREATERECTANGULARZONE 
+  IMAX = 100
+  JMAX = 100
+  KMAX = 100
+  X1 = 84.75
+  Y1 = 488
+  Z1 = 203
+  X2 = 117.2
+  Y2 = 500.48
+  Z2 = 204.2
+  XVAR = 1
+  YVAR = 2
+  ZVAR = 3
+$!DELETEZONES  [11]
+$!DELETEZONES  [11]
+$!FRAMELAYOUT 
+  SHOWHEADER = NO
+  HEADERCOLOR = RED
+  XYPOS
+    {
+    X = 1
+    Y = 0.25
+    }
+  WIDTH = 9
+  HEIGHT = 5.5
+$!THREEDAXIS 
+  ASPECTRATIOLIMIT = 25
+  BOXASPECTRATIOLIMIT = 25
+$!PLOTTYPE  = CARTESIAN3D
+$!FRAMENAME  = 'Frame 001'
+$!GLOBALTIME 
+   SOLUTIONTIME = 2025.06
+$!ACTIVEFIELDMAPS  =  [1-11]
+$!GLOBALRGB 
+  REDCHANNELVAR = 4
+  GREENCHANNELVAR = 4
+  BLUECHANNELVAR = 4
+  RANGEMIN = 0
+  RANGEMAX = 1
+$!GLOBALCONTOUR  1
+  VAR = 6
+  DEFNUMLEVELS = 8
+  LEGEND
+    {
+    SHOW = YES
+    SHOWHEADER = NO
+    XYPOS
+      {
+      X = 94.735
+      Y = 82.402
+      }
+    ANCHORALIGNMENT = BOTTOMRIGHT
+    ISVERTICAL = NO
+    HEADERTEXTSHAPE
+      {
+      HEIGHT = 1.5
+      }
+    NUMBERTEXTSHAPE
+      {
+      HEIGHT = 3.2
+      }
+    BOX
+      {
+      BOXTYPE = NONE
+      }
+    INCLUDECUTOFFLEVELS = YES
+    LABELINCREMENT = 90.22
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 225.54225
+    RANGEMAX = 676.62675
+    }
+  COLORMAPFILTER
+    {
+    COLORMAPDISTRIBUTION = CONTINUOUS
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0
+      CMAX = 902.169
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 1
+  RAWDATA
+8
+100
+200
+300
+400
+500
+600
+700
+800
+$!GLOBALCONTOUR  2
+  VAR = 5
+  DEFNUMLEVELS = 14
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 0.457582
+    RANGEMAX = 0.819194
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0.276776
+      CMAX = 1
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 2
+  RAWDATA
+14
+0.3
+0.35
+0.4
+0.45
+0.5
+0.55
+0.6
+0.65
+0.7
+0.75
+0.8
+0.85
+0.9
+0.95
+$!GLOBALCONTOUR  3
+  VAR = 6
+  DEFNUMLEVELS = 17
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    LABELINCREMENT = 90.22
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 225.542
+    RANGEMAX = 676.626
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0
+      CMAX = 902.168
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 3
+  RAWDATA
+17
+50
+100
+150
+200
+250
+300
+350
+400
+450
+500
+550
+600
+650
+700
+750
+800
+850
+$!GLOBALCONTOUR  4
+  VAR = 4
+  DEFNUMLEVELS = 9
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 125.38025
+    RANGEMAX = 375.12675
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0.507
+      CMAX = 500
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 4
+  RAWDATA
+9
+50
+100
+150
+200
+250
+300
+350
+400
+450
+$!GLOBALCONTOUR  5
+  VAR = 4
+  DEFNUMLEVELS = 9
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 125.38025
+    RANGEMAX = 375.12675
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0.507
+      CMAX = 500
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 5
+  RAWDATA
+9
+50
+100
+150
+200
+250
+300
+350
+400
+450
+$!GLOBALCONTOUR  6
+  VAR = 4
+  DEFNUMLEVELS = 9
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 125.38025
+    RANGEMAX = 375.12675
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0.507
+      CMAX = 500
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 6
+  RAWDATA
+9
+50
+100
+150
+200
+250
+300
+350
+400
+450
+$!GLOBALCONTOUR  7
+  VAR = 4
+  DEFNUMLEVELS = 9
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 125.38025
+    RANGEMAX = 375.12675
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0.507
+      CMAX = 500
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 7
+  RAWDATA
+9
+50
+100
+150
+200
+250
+300
+350
+400
+450
+$!GLOBALCONTOUR  8
+  VAR = 4
+  DEFNUMLEVELS = 9
+  LEGEND
+    {
+    SHOW = YES
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  COLORCUTOFF
+    {
+    RANGEMIN = 125.38025
+    RANGEMAX = 375.12675
+    }
+  COLORMAPFILTER
+    {
+    CONTINUOUSCOLOR
+      {
+      CMIN = 0.507
+      CMAX = 500
+      }
+    }
+$!CONTOURLEVELS NEW
+  CONTOURGROUP = 8
+  RAWDATA
+9
+50
+100
+150
+200
+250
+300
+350
+400
+450
+$!GLOBALTHREEDVECTOR 
+  UVAR = 1
+  VVAR = 2
+  WVAR = 3
+  RELATIVELENGTH = 0.035
+$!GLOBALSCATTER 
+  VAR = 4
+  RELATIVESIZE = 0.03444
+  LEGEND
+    {
+    XYPOS
+      {
+      X = 95
+      }
+    }
+  REFSCATSYMBOL
+    {
+    COLOR = RED
+    FILLCOLOR = RED
+    }
+$!BLANKING 
+  IJK
+    {
+    ZONE = 1
+    }
+  VALUE
+    {
+    INCLUDE = YES
+    CONSTRAINT 1
+      {
+      INCLUDE = YES
+      RELOP = GREATERTHANOREQUAL
+      VALUECUTOFF = 240
+      VARA = 1
+      }
+    CONSTRAINT 2
+      {
+      INCLUDE = YES
+      VALUECUTOFF = 370
+      VARA = 2
+      }
+    CONSTRAINT 3
+      {
+      VARA = 1
+      }
+    }
+$!FIELDMAP  [1]
+  MESH
+    {
+    SHOW = NO
+    COLOR = BLACK
+    }
+  CONTOUR
+    {
+    SHOW = NO
+    CONTOURTYPE = FLOOD
+    COLOR = BLACK
+    USELIGHTINGEFFECT = YES
+    }
+  VECTOR
+    {
+    COLOR = BLACK
+    }
+  SCATTER
+    {
+    SHOW = NO
+    COLOR = BLACK
+    }
+  SHADE
+    {
+    COLOR = CUSTOM2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    COLOR = BLACK
+    LINETHICKNESS = 0.1
+    }
+  POINTS
+    {
+    POINTSTOPLOT = SURFACENODES
+    }
+  SURFACES
+    {
+    SURFACESTOPLOT = BOUNDARYFACES
+    IRANGE
+      {
+      MAX = 1
+      }
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!FIELDMAP  [2-10]
+  MESH
+    {
+    COLOR = BLACK
+    LINETHICKNESS = 0.2
+    }
+  CONTOUR
+    {
+    SHOW = NO
+    CONTOURTYPE = FLOOD
+    COLOR = BLACK
+    USELIGHTINGEFFECT = YES
+    }
+  VECTOR
+    {
+    COLOR = BLACK
+    }
+  SCATTER
+    {
+    SHOW = NO
+    COLOR = BLACK
+    }
+  SHADE
+    {
+    COLOR = CUSTOM2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    COLOR = BLACK
+    LINETHICKNESS = 0.1
+    }
+  POINTS
+    {
+    POINTSTOPLOT = SURFACENODES
+    }
+  SURFACES
+    {
+    SURFACESTOPLOT = KPLANES
+    IRANGE
+      {
+      MAX = 1
+      }
+    }
+  VOLUMEMODE
+    {
+    VOLUMEOBJECTSTOPLOT
+      {
+      SHOWISOSURFACES = NO
+      SHOWSLICES = NO
+      SHOWSTREAMTRACES = NO
+      }
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!FIELDMAP  [11]
+  MESH
+    {
+    SHOW = NO
+    COLOR = RED
+    }
+  CONTOUR
+    {
+    SHOW = NO
+    CONTOURTYPE = FLOOD
+    COLOR = BLACK
+    USELIGHTINGEFFECT = YES
+    }
+  VECTOR
+    {
+    SHOW = NO
+    COLOR = BLACK
+    }
+  SCATTER
+    {
+    SYMBOLSHAPE
+      {
+      GEOMSHAPE = POINT
+      }
+    COLOR = PURPLE
+    FILLMODE = USELINECOLOR
+    FRAMESIZE = 0.1
+    }
+  SHADE
+    {
+    COLOR = CUSTOM2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    COLOR = PURPLE
+    LINETHICKNESS = 0.6
+    }
+  POINTS
+    {
+    POINTSTOPLOT = SURFACENODES
+    }
+  SURFACES
+    {
+    SURFACESTOPLOT = BOUNDARYFACES
+    IRANGE
+      {
+      MAX = 100
+      }
+    JRANGE
+      {
+      MAX = 100
+      }
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 90
+    }
+$!THREEDAXIS 
+  XDETAIL
+    {
+    VARNUM = 1
+    }
+  YDETAIL
+    {
+    VARNUM = 2
+    }
+  ZDETAIL
+    {
+    VARNUM = 3
+    }
+$!VIEW FIT
+$!THREEDAXIS 
+  AXISMODE = INDEPENDENT
+  XYDEPXTOYRATIO = 4.03333333333
+  DEPXTOYRATIO = 4.03333333333
+  DEPXTOZRATIO = 4.03333333333
+  FRAMEAXIS
+    {
+    SHOW = NO
+    XYPOS
+      {
+      X = 10
+      Y = 10
+      }
+    }
+$!THREEDAXIS 
+  XDETAIL
+    {
+    RANGEMIN = -20
+    RANGEMAX = 250
+    AUTOGRID = NO
+    GRSPACING = 50
+    TICKLABEL
+      {
+      TEXTSHAPE
+        {
+        HEIGHT = 6
+        }
+      }
+    TITLE
+      {
+      TITLEMODE = USETEXT
+      TEXT = 'Easting (m)'
+      TEXTSHAPE
+        {
+        HEIGHT = 6
+        }
+      OFFSET = 12
+      }
+    AXISLINE
+      {
+      EDGE = 1
+      }
+    }
+$!THREEDAXIS 
+  YDETAIL
+    {
+    RANGEMIN = 370
+    RANGEMAX = 510
+    GRSPACING = 50
+    TICKLABEL
+      {
+      TEXTSHAPE
+        {
+        HEIGHT = 6
+        }
+      }
+    TITLE
+      {
+      TITLEMODE = USETEXT
+      TEXT = 'Northing (m)'
+      TEXTSHAPE
+        {
+        HEIGHT = 6
+        }
+      OFFSET = 20
+      }
+    AXISLINE
+      {
+      EDGE = 3
+      }
+    }
+$!THREEDAXIS 
+  ZDETAIL
+    {
+    RANGEMIN = 120
+    RANGEMAX = 208
+    AUTOGRID = NO
+    GRSPACING = 20
+    TICKS
+      {
+      SHOWONAXISLINE = NO
+      SHOWONOPPOSITEEDGE = YES
+      }
+    TICKLABEL
+      {
+      SHOWONAXISLINE = NO
+      SHOWONOPPOSITEEDGE = YES
+      TEXTSHAPE
+        {
+        HEIGHT = 6
+        }
+      }
+    TITLE
+      {
+      SHOWONAXISLINE = NO
+      TITLEMODE = USETEXT
+      TEXT = 'Elevation (m)'
+      TEXTSHAPE
+        {
+        HEIGHT = 6
+        }
+      OFFSET = 30
+      }
+    AXISLINE
+      {
+      EDGE = 4
+      }
+    }
+$!ISOSURFACEATTRIBUTES  1
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 225.54225
+  ISOVALUE2 = 451.0845
+  ISOVALUE3 = 676.62675
+  CONTOUR
+    {
+    USELIGHTINGEFFECT = NO
+    }
+  SHADE
+    {
+    USELIGHTINGEFFECT = NO
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    USETRANSLUCENCY = YES
+    }
+$!ISOSURFACEATTRIBUTES  2
+  DEFINITIONCONTOURGROUP = 2
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 0.457582
+  ISOVALUE2 = 0.638388
+  ISOVALUE3 = 0.819194
+  CONTOUR
+    {
+    LINECONTOURGROUP = 2
+    FLOODCOLORING = GROUP2
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!ISOSURFACEATTRIBUTES  3
+  DEFINITIONCONTOURGROUP = 3
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 225.542
+  ISOVALUE2 = 451.084
+  ISOVALUE3 = 676.626
+  CONTOUR
+    {
+    LINECONTOURGROUP = 3
+    FLOODCOLORING = GROUP3
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!ISOSURFACEATTRIBUTES  4
+  DEFINITIONCONTOURGROUP = 4
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 125.38025
+  ISOVALUE2 = 250.2535
+  ISOVALUE3 = 375.12675
+  CONTOUR
+    {
+    LINECONTOURGROUP = 4
+    FLOODCOLORING = GROUP4
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!ISOSURFACEATTRIBUTES  5
+  DEFINITIONCONTOURGROUP = 5
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 125.38025
+  ISOVALUE2 = 250.2535
+  ISOVALUE3 = 375.12675
+  CONTOUR
+    {
+    LINECONTOURGROUP = 5
+    FLOODCOLORING = GROUP5
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!ISOSURFACEATTRIBUTES  6
+  DEFINITIONCONTOURGROUP = 6
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 125.38025
+  ISOVALUE2 = 250.2535
+  ISOVALUE3 = 375.12675
+  CONTOUR
+    {
+    LINECONTOURGROUP = 6
+    FLOODCOLORING = GROUP6
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!ISOSURFACEATTRIBUTES  7
+  DEFINITIONCONTOURGROUP = 7
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 125.38025
+  ISOVALUE2 = 250.2535
+  ISOVALUE3 = 375.12675
+  CONTOUR
+    {
+    LINECONTOURGROUP = 7
+    FLOODCOLORING = GROUP7
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!ISOSURFACEATTRIBUTES  8
+  DEFINITIONCONTOURGROUP = 8
+  ISOSURFACESELECTION = ONESPECIFICVALUE
+  ISOVALUE1 = 125.38025
+  ISOVALUE2 = 250.2535
+  ISOVALUE3 = 375.12675
+  CONTOUR
+    {
+    LINECONTOURGROUP = 8
+    FLOODCOLORING = GROUP8
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    }
+$!SLICEATTRIBUTES  1
+  PRIMARYPOSITION
+    {
+    X = 42
+    Y = 250.5
+    Z = 164.2
+    I = 1
+    J = 1
+    K = 1
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = YES
+    LINETHICKNESS = 0.1
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    INCLUDE = NO
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  2
+  SHOWGROUP = YES
+  SLICESURFACE = YPLANES
+  PRIMARYPOSITION
+    {
+    X = 550
+    Y = 500
+    Z = 164.2
+    I = 1
+    J = 1
+    K = 1
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = YES
+    LINETHICKNESS = 0.1
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    INCLUDE = NO
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  3
+  SHOWGROUP = YES
+  SLICESURFACE = ZPLANES
+  PRIMARYPOSITION
+    {
+    X = 550
+    Y = 250.5
+    Z = 140
+    I = 1
+    J = 1
+    K = 1
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = YES
+    LINETHICKNESS = 0.1
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    INCLUDE = NO
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  4
+  PRIMARYPOSITION
+    {
+    X = 27.2298166331
+    Y = 250.5
+    Z = 164.2
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  CONTOUR
+    {
+    SHOW = NO
+    }
+  EDGELAYER
+    {
+    SHOW = YES
+    LINETHICKNESS = 0.1
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 1
+    }
+  SLICECONSTRAINT
+    {
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  5
+  SLICESURFACE = YPLANES
+  PRIMARYPOSITION
+    {
+    X = 550
+    Y = 250.5
+    Z = 164.2
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  6
+  SLICESURFACE = ZPLANES
+  PRIMARYPOSITION
+    {
+    X = 550
+    Y = 250.5
+    Z = 164.2
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  7
+  PRIMARYPOSITION
+    {
+    X = 550
+    Y = 250.5
+    Z = 164.2
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!SLICEATTRIBUTES  8
+  SLICESURFACE = YPLANES
+  PRIMARYPOSITION
+    {
+    X = 550
+    Y = 250.5
+    Z = 164.2
+    }
+  STARTPOSITION
+    {
+    X = 55
+    Y = 25.05
+    Z = 128.2
+    }
+  ENDPOSITION
+    {
+    X = 1045
+    Y = 475.95
+    Z = 200.2
+    I = 2
+    J = 2
+    K = 2
+    }
+  EDGELAYER
+    {
+    SHOW = NO
+    }
+  EFFECTS
+    {
+    LIGHTINGEFFECT = GOURAUD
+    SURFACETRANSLUCENCY = 10
+    }
+  SLICECONSTRAINT
+    {
+    ORIGIN
+      {
+      X = 550
+      Y = 250.5
+      Z = 164.2
+      }
+    BOXDIMENSION
+      {
+      X = 550
+      Y = 250.5
+      Z = 39.99999999999999
+      }
+    }
+$!STREAMATTRIBUTES 
+  STREAMTIMING
+    {
+    MARKSIZE = 1
+    MARKSYMBOL
+      {
+      GEOMSHAPE = SPHERE
+      }
+    }
+  RODRIBBON
+    {
+    EFFECTS
+      {
+      LIGHTINGEFFECT = GOURAUD
+      }
+    }
+  MAXSTEPS = 10000
+$!GLOBALTHREED 
+  AXISSCALEFACT
+    {
+    X = 1
+    Y = 1.1
+    Z = 1.2
+    }
+  ROTATEORIGIN
+    {
+    X = 334.2785714285713
+    Y = 402.0087098530212
+    Z = 164
+    }
+  LIGHTSOURCE
+    {
+    XYZDIRECTION
+      {
+      X = -0.2
+      Y = -0.2
+      Z = 0.9591663046625438
+      }
+    INTENSITY = 75
+    BACKGROUNDLIGHT = 25
+    INCLUDESPECULAR = YES
+    SPECULARINTENSITY = 40
+    SPECULARSHININESS = 60
+    }
+  LINELIFTFRACTION = 0.2
+  SYMBOLLIFTFRACTION = 0.6
+  VECTORLIFTFRACTION = 0.7
+  NEARPLANEFRACTION = 0.1
+$!THREEDVIEW 
+  PSIANGLE = 68.1949
+  THETAANGLE = -31.0032
+  ALPHAANGLE = 0.239429
+  VIEWERPOSITION
+    {
+    X = 453.1629871474581
+    Y = -81.9376105741236
+    Z = 389.0232114655485
+    }
+  VIEWWIDTH = 390.912
+$!FIELDLAYERS 
+  SHOWCONTOUR = YES
+  SHOWSCATTER = YES
+  USELIGHTINGEFFECT = NO
+$!SLICELAYERS 
+  SHOW = YES
+$!STREAMTRACELAYERS 
+  SHOW = NO
+$!ATTACHTEXT 
+  ANCHORPOS
+    {
+    X = 54.29678044057143
+    Y = 93.87915098699382
+    }
+  TEXT = 'Aqueoue I-129 Concentration (pCi/L)'
+$!ATTACHTEXT 
+  ANCHORPOS
+    {
+    X = 6.330186395545864
+    Y = 36.62173202614273
+    }
+  ANGLE = 90
+  TEXT = 'Elevation (m)'
+$!ATTACHTEXT 
+  ANCHORPOS
+    {
+    X = 2.602275478092486
+    Y = 90.39413745296099
+    }
+  TEXTSHAPE
+    {
+    HEIGHT = 20
+    }
+  TEXT = 'Time = &(SOLUTIONTIME) yr'
+$!ATTACHTEXT 
+  ANCHORPOS
+    {
+    X = 76.3858629871702
+    Y = 49.77223212517328
+    }
+  COLOR = PURPLE
+  TEXTSHAPE
+    {
+    ISBOLD = NO
+    }
+  ANGLE = -15
+  TEXT = 'CCUZ'
+$!FRAMECONTROL ACTIVATEBYNUMBER
+  FRAME = 1
+$!SETSTYLEBASE CONFIG
