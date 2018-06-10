@@ -6,15 +6,14 @@
 ## written by Xuehang Song 03/01/2018
 ## revised by Xuehang Song 04/13/2018
 
+simu_dir="/pic/scratch/song884/dust/fy2018/by_3a/"
+figures_dir="/people/song884/dust/fy2018/by_3a/figures/"
 
-simu_dir="/pic/scratch/song884/fy2018/by_1a/"
-tools_dir="/people/song884/stomp/tools/"
-scripts_dir="/people/song884/dust/fy2018/by_1a/scripts/"
-figures_dir="/people/song884/dust/fy2018/by_1a/figures/"
-
+tools_dir="/people/song884/github/constance_tools/"
+scripts_dir="/people/song884/github/dvz_dust/by/"
 
 min_time=2018
-max_time=2200
+max_time=2030
 
 layouts=(
     $scripts_dir"by_no3_with_layer.lay"
@@ -22,9 +21,8 @@ layouts=(
 )
 cd $simu_dir
 
-# cases=("base" $(ls -d *l*))
-# for icase in ${cases[@]}
-for icase in l2_backup
+cases=("base" $(ls -d *l*))
+for icase in ${cases[@]}
 do
     echo $icase
     selected_figs=()

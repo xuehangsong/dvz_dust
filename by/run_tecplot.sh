@@ -1,32 +1,24 @@
 #!/bin/bash -l
-#SBATCH -A dvz
-#SBATCH -t 03:00:00
-#SBATCH -p slurm
-#SBATCH -N 1
-#SBATCH -n 24
-#SBATCH -J tecplot
-#SBATCH --exclusive
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=xuehang.song@pnnl.gov
 
+simu_dir="/pic/scratch/song884/dust/fy2018/by_3a/"
+figures_dir="/people/song884/dust/fy2018/by_3a/figures/"
 
-simu_dir="/pic/scratch/song884/fy2018/by_1a/"
-tools_dir="/people/song884/stomp/tools/"
-scripts_dir="/people/song884/dust/fy2018/by_1a/scripts/"
-figures_dir="/people/song884/dust/fy2018/by_1a/figures/"
+tools_dir="/people/song884/github/constance_tools/"
+scripts_dir="/people/song884/github/dvz_dust/by/"
 
-export simu_dir
-export tools_dir
-export scripts_dir
-export figures_dir
+layouts="by_no3_with_layer.lay
+	 by_satu_with_layer.lay"
+cases=$(cd $simu_dir && ls -d *l*/)
 
-cases=$(cd "/pic/scratch/song884/fy2018/by_1a/" && ls -d *l*/)
+export tools_dir=$tools_dir
+export scripts_dir=$scripts_dir
+export simu_dir=$simu_dir
+export layouts=$layouts
+export cases=$cases
+export figures_dir=$figures_dir
 
-
-for icase in $cases
+for icase in $cases base ss 2018	     
 do
-    export icase
-    sh $scripts_dir"batch_tecplot.sh" &
+    export icase=$icase
+    sbatch $scripts_dir"batch_tecplot.sh" 
 done
-
-wait

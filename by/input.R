@@ -2,12 +2,10 @@
 ##written by Xuehang Song, 04/03/2018
 ##modified by Xuehang Song, 04/30/2018
 rm(list=ls())
-simu.dir = "/pic/scratch/song884/dust/fy2018/by_3a/"
+simu.dir = "/pic/scratch/song884/dust/fy2018/by_2a/"
 
 
-
-
-scripts.dir="/people/song884/dust/fy2018/by_1a/scripts/"
+scripts.dir="/people/song884/github/dvz_dust/by/"
 setwd(simu.dir)
 
 source(paste(scripts.dir,"parameter.R",sep=""))

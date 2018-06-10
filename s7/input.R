@@ -3,8 +3,9 @@
 ##written by Xuehang Song, 04/03/2018
 rm(list=ls())
 
-scripts.dir="/people/song884/dust/fy2018/s7_1a/scripts/"
-simu.dir = "/pic/scratch/song884/fy2018/s7_4b/"
+simu.dir = "/pic/scratch/song884/dust/fy2018/s7_5a/"
+
+scripts.dir="/people/song884/github/dvz_dust/s7/"
 setwd(simu.dir)
 
 source(paste(scripts.dir,"parameter.R",sep=""))
