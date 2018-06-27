@@ -2,7 +2,7 @@
 ##written by Xuehang Song, 04/03/2018
 ##modified by Xuehang Song, 04/30/2018
 rm(list=ls())
-simu.dir = "/pic/scratch/song884/dust/fy2018/by_2a/"
+simu.dir = "/pic/scratch/song884/dust/fy2018/by_5a/"
 
 
 scripts.dir="/people/song884/github/dvz_dust/by/"

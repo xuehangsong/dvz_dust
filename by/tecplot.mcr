@@ -1,4 +1,4 @@
-#!MC 1400
+#!MC 1410
 $!OPENLAYOUT = "/people/song884/dust/fy2018/by_1a/scripts/by_satu_with_layer.lay"
 ALTDATALOADINSTRUCTIONS = '"/pic/scratch/song884/fy2018/by_1a/l2/tec_data/3000.00.plt" "/pic/scratch/song884/fy2018/by_1a/l2/tec_data/3000.00.plt"'
 $!EXPORTSETUP ExportFormat = JPEG

@@ -9,9 +9,9 @@
 ## revised by Xuehang Song 04/10/2018
 
 
-simu_dir="/pic/scratch/song884/dust/fy2018/by_3a/"
+simu_dir="/pic/scratch/song884/dust/fy2018/by_4a/"
 script_dir="/people/song884/stomp/tools/"
-
+ 
 cd $simu_dir
 
 

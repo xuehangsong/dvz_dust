@@ -9,7 +9,7 @@
 ## revised by Xuehang Song 04/10/2018
 
 
-simu_dir="/pic/scratch/song884/dust/fy2018/s7_5b/"
+simu_dir="/pic/scratch/song884/dust/fy2018/s7_5a/"
 script_dir="/people/song884/stomp/tools/"
 
 cd $simu_dir

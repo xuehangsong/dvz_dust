@@ -1,0 +1,18 @@
+## scripts was named as <solute.flux.v3.R>
+## plot all figures for single case
+## written by Xuehang 04/11/2018
+
+rm(list=ls())
+library(RColorBrewer)
+
+
+case.name = "by_4a"
+
+
+## define dirs
+simu.dir=paste("/pic/scratch/song884/dust/fy2018/",
+               case.name,"/",sep="")
+figure.dir=paste("/people/song884/dust/fy2018/",
+                 case.name,"/figures/",sep="")
+results.dir = paste("/people/song884/dust/fy2018/",
+                    case.name,"/",sep="")

@@ -1,25 +1,28 @@
-#rm(list=ls())
+rm(list=ls())
 cases.dir = c("by_2a",
               "by_1a",
-              "by_5a")
-#              "by_4a")
+              "by_4a",              
+              "by_5a",
+              "by_3a")
 cases.dir = paste("/people/song884/dust/fy2018/",cases.dir,sep="")
 combined.figure.dir="/people/song884/dust/fy2018/by_all/"
 
-combined.color = c("red","green","blue","grey",
-                   "red","green","blue","grey")
-combined.lty = c(1,1,1,1)
+combined.color = c("red","orange","green","blue","black")
+combined.lty = c(1,1,1,1,1)
+
+solute.cum.index = 29
+wt.cum.index = 27
 
 ## legend.txt = c(expression(Low ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
 ##                expression(Mean ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
 ##                expression(High ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
 ##                expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"))               
 
-legend.txt = c(expression(Low ~ K[S] ~"/"~theta[S]),
-               expression(Mean ~ K[S] ~"/"~theta[S]),
-               expression(High ~ K[S] ~"/"~theta[S]),
-               expression(Hete. ~ K[S] ~"/"~theta[S])               
-               )
+legend.txt = c(expression(K[S] ~"4.12e-7 cm/s"),
+               expression(K[S] ~"5.57e-5 cm/s"),
+               expression(K[S] ~"1.36e-3 cm/s"),
+               expression(K[S] ~"1.36e-2 cm/s"),
+               expression(K[S] ~"1.36e-1 cm/s"))
 
 ndir = length(cases.dir)
 
@@ -27,17 +30,21 @@ peak.solute.list = list()
 peak.year.list = list()
 equi.wt.year.list = list()
 equi.solute.year.list = list()
+spinup.wt = list()
+spinup.solute = list()
 for (idir in 1:ndir)
 {
     print(idir)
-    load(paste(cases.dir[idir],"/results.r",sep=""))
+    load(paste(cases.dir[idir],"/results_entire_domain.r",sep=""))
     peak.solute.list[[idir]] = peak.solute
     peak.year.list[[idir]] = peak.year
     equi.solute.year.list[[idir]] = equi.solute.year
-    equi.wt.year.list[[idir]] = equi.wt.year        
+    equi.wt.year.list[[idir]] = equi.wt.year
+    spinup.wt[[idir]] =spinup.data[,c(1,wt.cum.index)]
+    spinup.solute[[idir]] = spinup.data[,c(1,solute.cum.index)]
 }
 
-
+stop()
 colors = rev(topo.colors(ncase))
 colors = rainbow(ncase,end=0.65)
 names(colors) = cases
@@ -49,7 +56,91 @@ solute.at = seq(0,3000000,500000)
 lengend.index = c(1,seq(50,500,50))
 
 
-jpeg(filename=paste(combined.figure.dir,"combined_peak_flux.jpg",sep=""),
+jpeg(filename=paste(combined.figure.dir,"combined_cum_wt_entire_domain.jpg",sep=""),
+     width = 6.5,height = 5,
+     units = "in",res = 600, quality = 100)
+par(mgp=c(2.,0.,0),
+    mar=c(5.0,2.4,2.4,0.5),    
+    oma=c(0,0,0,0))
+plot(spinup.wt[[1]][,1],spinup.wt[[1]][,2],
+     type="l",
+     lwd=1,
+     lty=1,
+     pch=1,
+     col="white",
+     xlab=NA,
+     ylab=NA,
+     ylim=c(0,1.2e5),
+     axes=FALSE,
+     )
+box()
+for (idir in 1:ndir)
+{
+    print(idir)
+    print(idir)
+    lines(spinup.wt[[idir]][,1],spinup.wt[[idir]][,2],
+          col=combined.color[idir],
+          lwd=2,
+          lty=combined.lty[idir]
+          )
+}
+axis(1,tck=0.02)
+axis(2,tck=0.02)
+mtext("Time (year)",1,line=1)
+mtext(expression("Water Cumulative Flux(m"^3~")"),
+      2,line=1)
+legend("topleft",legend.txt[1:ndir],
+       lty=combined.lty,
+       col=combined.color,
+       lwd=2,bty="n")
+dev.off()
+
+
+
+jpeg(filename=paste(combined.figure.dir,"combined_cum_solute_entire_domain.jpg",sep=""),
+     width = 6.5,height = 5,
+     units = "in",res = 600, quality = 100)
+par(mgp=c(2.,0.,0),
+    mar=c(5.0,2.4,2.4,0.5),    
+    oma=c(0,0,0,0))
+plot(spinup.wt[[1]][,1],spinup.solute[[1]][,2],
+     type="l",
+     lwd=1,
+     lty=1,
+     pch=1,
+     col="white",
+     xlab=NA,
+     ylab=NA,
+     ylim=c(0,4e6),
+     axes=FALSE,
+     )
+box()
+for (idir in 1:ndir)
+{
+    print(idir)
+    print(idir)
+    lines(spinup.wt[[idir]][,1],spinup.solute[[idir]][,2],
+          col=combined.color[idir],
+          lwd=2,
+          lty=combined.lty[idir]
+          )
+}
+axis(1,tck=0.02)
+axis(2,tck=0.02)
+mtext("Time (year)",1,line=1)
+mtext(expression("NO"[3]~"- Cumulative Flux (kg)"),
+      2,line=1)
+legend("topleft",legend.txt[1:ndir],
+       lty=combined.lty,
+       col=combined.color,
+       lwd=2,bty="n")
+dev.off()
+
+
+
+
+
+jpeg(filename=paste(combined.figure.dir,"combined_peak_flux_entire_domain.jpg",sep=""),
      width = 6.5,height = 5,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.,0),
@@ -108,9 +199,9 @@ mtext(expression("Applied Water Volume (gal/min)"),
       1,line=4,col="blue")
 mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
-mtext(expression("NO"[3]~"- Flux Rate (kg/L)"),
+mtext(expression("NO"[3]~"- Flux Rate (kg/yr/" ~ m^2 ~")"),
       2,line=1)
-legend("topleft",legend.txt[1:3],
+legend("topleft",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
@@ -121,7 +212,7 @@ dev.off()
 
 
 
-jpeg(filename=paste(combined.figure.dir,"combined_peak_year.jpg",sep=""),
+jpeg(filename=paste(combined.figure.dir,"combined_peak_year_entire_domain.jpg",sep=""),
      width = 6.5,height = 5,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.,0),
@@ -174,7 +265,7 @@ mtext(expression("Applied Water Volume (gal/min)"),
 mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext("Time (year)",2,line=1)
-legend("topright",legend.txt[1:3],
+legend("topright",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
@@ -185,7 +276,7 @@ dev.off()
 
 
 
-jpeg(filename=paste(combined.figure.dir,"combined_equal_solute_year.jpg",sep=""),
+jpeg(filename=paste(combined.figure.dir,"combined_equal_solute_year_entire_domain.jpg",sep=""),
      width = 6.5,height = 4.5,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.,0),
@@ -200,10 +291,10 @@ plot(c(0,rate),equi.solute.year,
      xlab=NA,
      ylab=NA,
      axes=FALSE,
-     ylim=c(2000,3000)
+     ylim=c(2500,3000)
      )
 box()
-for (idir in 1:3)
+for (idir in 1:ndir)
 {
     print(idir)
     lines(c(rate),tail(equi.solute.year.list[[idir]],-1),
@@ -226,7 +317,7 @@ mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext(expression("Equilibration Time (year)"),
       2,line=1)
-legend("topright",legend.txt[1:3],
+legend("topright",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
@@ -234,7 +325,7 @@ dev.off()
 
 
 
-jpeg(filename=paste(combined.figure.dir,"combined_equal_wt_year.jpg",sep=""),
+jpeg(filename=paste(combined.figure.dir,"combined_equal_wt_year_entire_domain.jpg",sep=""),
      width = 6.5,height = 4.5,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.,0),
@@ -248,11 +339,11 @@ plot(c(0,rate),equi.wt.year,
      col="white",
      xlab=NA,
      ylab=NA,
-     ylim=c(2120,2125),
+     ylim=c(2082,2087),
      axes=FALSE,
      )
 box()
-for (idir in 1:3)
+for (idir in 1:ndir)
 {
     print(idir)
     ori.rate = rate
@@ -289,7 +380,7 @@ mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext(expression("Equilibration Time (year)"),
       2,line=1)
-legend("topright",legend.txt[1:3],
+legend("topright",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")

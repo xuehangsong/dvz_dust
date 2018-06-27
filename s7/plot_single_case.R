@@ -6,11 +6,11 @@ rm(list=ls())
 library(RColorBrewer)
 
 
-case.name = "s7_3a"
+case.name = "s7_5b"
 
 
 ## define dirs
-simu.dir=paste("/pic/scratch/song884/fy2018/",
+simu.dir=paste("/pic/scratch/song884/dust/fy2018/",
                case.name,"/",sep="")
 figure.dir=paste("/people/song884/dust/fy2018/",
                  case.name,"/figures/",sep="")

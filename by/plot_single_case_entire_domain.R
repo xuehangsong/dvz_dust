@@ -6,7 +6,7 @@ rm(list=ls())
 library(RColorBrewer)
 
 
-case.name = "by_4a"
+case.name = "by_5a"
 
 
 ## define dirs
@@ -26,6 +26,9 @@ source(paste(scripts.dir,"parameter.R",sep=""))
 solute.index = 6
 wt.flux.index = 4
 
+solute.index = 28
+wt.flux.index = 26
+
 colors = rev(topo.colors(ncase))
 colors = rainbow(ncase,end=0.65)
 names(colors) = cases
@@ -41,13 +44,14 @@ icase="2018"
 spinup.data = read.table(
     paste(simu.dir,icase,"/tec_data/surface.dat",sep=""),
     skip=3)
-stop()
+
 ## find the peak year and peak flux of  solute entering the saturated zone
 surface.data = list()
 peak.solute = rep(NA,1+ncase)
 names(peak.solute) = c("base",cases)
 peak.year = rep(NA,1+ncase)
 names(peak.year) = c("base",cases)
+
 for (icase in c("base",cases))
 {
     print(icase)
@@ -76,7 +80,6 @@ equi.wt.value = approx(surface.data[["base"]][,1],
 equi.solute.value = approx(surface.data[["base"]][,1],
                        surface.data[["base"]][,solute.index],
                        interp.t)[[2]]
-
 equi.wt.value = tail(surface.data[["base"]][,wt.flux.index],1)
 equi.solute.value = 1#tail(surface.data[["base"]][,solute.index],1)
 
@@ -102,7 +105,7 @@ for (icase in c(cases))
 #equi.wt.year["r116"] = 0.5*(equi.wt.year["r114"]+equi.wt.year["r118"])
 
 
-save(list=ls(),file=paste(results.dir,"results.r",sep=""))
+save(list=ls(),file=paste(results.dir,"results_entire_domain.r",sep=""))
 
 stop()
 

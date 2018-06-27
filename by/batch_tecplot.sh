@@ -1,6 +1,6 @@
 #!/bin/bash  -l
 #SBATCH -A dvz
-#SBATCH -t 01:00:00
+#SBATCH -t 03:00:00
 #SBATCH -p short
 #SBATCH -N 1
 #SBATCH -n 24
@@ -19,8 +19,9 @@
 ## written by Xuehang Song 03/01/2018
 ## revised by Xuehang Song 06/05/2018
 
-module load tecplot
-ulimit -a unlimited
+module remove tecplot*
+module load tecplot/2015r2
+ulimit -s unlimited
 
 cp $scripts_dir*"lay" $simu_dir$icase/
 cp $scripts_dir"tecplot.mcr" $simu_dir$icase/
@@ -46,11 +47,12 @@ do
 	solutiontime="  SOLUTIONTIME = "$itime
 	sed -i "/$!GLOBALTIME/!b;n;c\ $solutiontime" $ilayout_dir
 
-	mcr_layout="\$!OPENLAYOUT = \"$ilayout_dir\""
+	mcr_layout="\$!OPENLAYOUT \"$ilayout_dir\""
 	sed -i "/$!OPENLAYOUT/c\\$mcr_layout" \
 	    $simu_dir$icase"/tecplot.mcr"
 
-	mcr_data="ALTDATALOADINSTRUCTIONS = '\"$iplt\" \"$iplt\"'"
+	##	mcr_data="ALTDATALOADINSTRUCTIONS = '\"$iplt\" \"$iplt\"'"
+	mcr_data="ALTDATALOADINSTRUCTIONS = '\"$iplt\" \"$iplt\" \"$iplt\"'"	
 	echo $mcr_data
 	sed -i "/ALTDATALOADINSTRUCTIONS/c\\$mcr_data" \
 	    $simu_dir$icase"/tecplot.mcr"

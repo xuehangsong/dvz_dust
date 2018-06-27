@@ -6,8 +6,12 @@
 ## written by Xuehang Song 03/01/2018
 ## revised by Xuehang Song 04/13/2018
 
-simu_dir="/pic/scratch/song884/dust/fy2018/by_3a/"
-figures_dir="/people/song884/dust/fy2018/by_3a/figures/"
+
+group="by_1a"
+
+simu_dir="/pic/scratch/song884/dust/fy2018/"$group/
+figures_dir="/people/song884/dust/fy2018/"$group"/figures/"
+
 
 tools_dir="/people/song884/github/constance_tools/"
 scripts_dir="/people/song884/github/dvz_dust/by/"
@@ -16,8 +20,8 @@ min_time=2018
 max_time=2030
 
 layouts=(
-    $scripts_dir"by_no3_with_layer.lay"
-    $scripts_dir"by_satu_with_layer.lay"
+    $scripts_dir"by_no3_with_layer_v2.lay"
+    $scripts_dir"by_satu_with_layer_v2.lay"
 )
 cd $simu_dir
 

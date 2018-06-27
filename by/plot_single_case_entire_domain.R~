@@ -26,6 +26,9 @@ source(paste(scripts.dir,"parameter.R",sep=""))
 solute.index = 6
 wt.flux.index = 4
 
+solute.index = 28
+wt.flux.index = 26
+
 colors = rev(topo.colors(ncase))
 colors = rainbow(ncase,end=0.65)
 names(colors) = cases
@@ -41,7 +44,7 @@ icase="2018"
 spinup.data = read.table(
     paste(simu.dir,icase,"/tec_data/surface.dat",sep=""),
     skip=3)
-stop()
+
 ## find the peak year and peak flux of  solute entering the saturated zone
 surface.data = list()
 peak.solute = rep(NA,1+ncase)

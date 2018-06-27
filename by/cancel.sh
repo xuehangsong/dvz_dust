@@ -1,5 +1,6 @@
 #!/bin/bash -l
-for i in $(seq 4555670 4556774)
+for i in $(seq 4859146 4859946)
 do
+    echo $i
     scancel $i
 done
