@@ -6,7 +6,7 @@
 ## written by Xuehang Song 03/03/2018
 ## revised by Xuehang Song 04/08/2018
 
-simu_dir="/pic/scratch/song884/dust/fy2018/s7_5a/"
+simu_dir="/pic/scratch/song884/dust/fy2018/s7_10b/"
 script_dir="/people/song884/stomp/tools/"
 
 cd $simu_dir

@@ -2,7 +2,7 @@
 ##written by Xuehang Song, 04/03/2018
 ##modified by Xuehang Song, 04/30/2018
 rm(list=ls())
-simu.dir = "/pic/scratch/song884/dust/fy2018/by_5a/"
+simu.dir = "/pic/scratch/song884/dust/fy2018/new_by/by_10a/"
 
 
 scripts.dir="/people/song884/github/dvz_dust/by/"
@@ -21,8 +21,10 @@ for (irate in 2:nrate)
     }
     Sys.chmod((paste("r",rate[irate],sep="")),"700")        
 
-    system(paste("cp -p r2/nonuniform-zonation-by r",rate[irate],sep=""))    
-
+    ## system(paste("cp -p r2/nonuniform-zonation-by r",rate[irate],sep=""))    
+    ## system(paste("cp -p r2/restart.hdf5 r",rate[irate],sep=""))    
+    system(paste("cp -p r2/*txt r",rate[irate],sep=""))    
+    
     template.rate = base.rate+rate[1]*(365*3+366)/4
     year.rate = base.rate+rate[irate]*(365*3+366)/4
 
@@ -41,7 +43,9 @@ for (irate in 2:nrate.l)
     }
     Sys.chmod((paste("l",rate.l[irate],sep="")),"700")        
 
-    system(paste("cp -p l2/nonuniform-zonation-by l",rate.l[irate],sep=""))    
+    ## system(paste("cp -p l2/nonuniform-zonation-by l",rate.l[irate],sep=""))        
+    ## system(paste("cp -p l2/restart.hdf5 l",rate.l[irate],sep=""))    
+    system(paste("cp -p l2/*txt l",rate.l[irate],sep=""))
     
     template.rate = base.rate+rate.l[1]*(365*3+366)/4
     year.rate = base.rate+rate.l[irate]*(365*3+366)/4

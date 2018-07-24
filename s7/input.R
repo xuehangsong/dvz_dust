@@ -3,7 +3,7 @@
 ##written by Xuehang Song, 04/03/2018
 rm(list=ls())
 
-simu.dir = "/pic/scratch/song884/dust/fy2018/s7_5a/"
+simu.dir = "/pic/scratch/song884/dust/fy2018/s7_10b/"
 
 scripts.dir="/people/song884/github/dvz_dust/s7/"
 setwd(simu.dir)
