@@ -2,32 +2,62 @@ rm(list=ls())
 cases.dir = c("s7_2a",
               "s7_1a",
               "s7_3a",
-              "s7_4a",
-              "s7_5a",                            
+              "s7_6a",
+              "s7_7a",
+              "s7_8a",
+              "s7_9a",
+              "s7_10a",
               "s7_2b",
               "s7_1b",
               "s7_3b",
-              "s7_4b",              
-              "s7_5b")
-cases.dir = paste("/people/song884/dust/fy2018/",cases.dir,sep="")
-combined.figure.dir="/people/song884/dust/fy2018/s7_all/"
+              "s7_6b",
+              "s7_7b",
+              "s7_8b",
+              "s7_9b",                                          
+              "s7_10b")
 
-combined.color = c("red","green","blue","grey","grey",
-                   "red","green","blue","grey","grey")
-combined.lty = c(1,1,1,1,1,
-                 2,2,2,2,2)
+cases.dir = paste("/people/song884/dust/fy18/",cases.dir,sep="")
+combined.figure.dir="/people/song884/dust/fy18/s7_all/"
+
+combined.color = c("red","green","blue","grey","grey","grey","grey","grey",
+                   "red","green","blue","grey","grey","grey","grey","grey")
+combined.lty = c(1,1,1,1,1,1,1,1,
+                 2,2,2,2,2,2,2,2)
 legend.txt = c(expression(Low ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
                expression(Mean ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
                expression(High ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
                expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
-               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),                              
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),                                             
                expression(Low ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
                expression(Mean ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
                expression(High ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
                expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
-               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g")               
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g"),
+               expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0.1 cm"^3~"/g")
                )
-ndir = length(cases.dir)
+
+legend.txt = c(expression("S7_L, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_M, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_H, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_R1, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_R2, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_R3, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_R4, "~k[d]~"=0.0 cm"^3~"/g"),
+               expression("S7_R5, "~k[d]~"=0.0 cm"^3~"/g"),               
+               expression("S7_L, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_M, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_H, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_R1, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_R2, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_R3, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_R4, "~k[d]~"=0.1 cm"^3~"/g"),
+               expression("S7_R5, "~k[d]~"=0.1 cm"^3~"/g")
+               )
 
 peak.solute.list = list()
 peak.year.list = list()
@@ -45,12 +75,12 @@ for (idir in 1:ndir)
 
 
 jpeg(filename=paste(combined.figure.dir,"combined_peak_flux.jpg",sep=""),
-     width = 6.5,height = 5,
+     width = 8,height = 5,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.,0),
     mar=c(5.0,2.4,2.4,0.5),    
     oma=c(0,0,0,0))
-plot(c(0,rate),peak.solute,
+plot(c(0,rate),peak.solute[[groups[1]]],
      type="l",
      lwd=1,
      lty=1,
@@ -62,12 +92,11 @@ plot(c(0,rate),peak.solute,
      axes=FALSE,
      )
 box()
-for (idir in 1:ndir)
+for (igroup in 1:groups)
 {
     print(idir)
-#    points(c(0,rate),peak.solute.list[[idir]],col="grey",cex=0.4)
-    points(0,peak.solute.list[[idir]][1],pch=1)
-    lines(c(0,rate),peak.solute.list[[idir]],
+    points(0,peak.solute[[igroup]][1],pch=1)
+    lines(c(0,rate),peak.solute[[igroup]],
           col=combined.color[idir],
           lwd=2,
           lty=combined.lty[idir]
@@ -75,8 +104,6 @@ for (idir in 1:ndir)
 }
 axis(1,at=rate.at,labels=rate.at,tck=0.02)
 axis(2,tck=0.02)
-## axis(2,at=solute.at,
-##      labels=sprintf("%2.1e",solute.at),tck=0.02)
 axis(3,at=truckload.at,
      line=0,col="blue",col.ticks="blue",col.axis="blue",
      labels=sprintf("%1.1f",truckload.label),tck=0.02)
@@ -89,24 +116,21 @@ mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext(expression("I-129 Flux Rate (pCi/yr/" ~ m^2 ~")"),
       2,line=1)
-legend(0,7.2e6,legend.txt[1:4],
+legend(0,7.2e6,legend.txt[1:(ndir/2)],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
-#legend(170,7.2e6,legend.txt[5:8],
-legend(170,7.2e6,legend.txt[1:4+ndir/2],       
-       lty=combined.lty[1:4+ndir/2],       
-       col=combined.color[1:4+ndir/2],       
+legend(170,7.2e6,legend.txt[(ndir/2+1):ndir],       
+       lty=combined.lty[(ndir/2+1):ndir],       
+       col=combined.color[(ndir/2+1):ndir],       
        lwd=2,bty="n")
 dev.off()
 
 
 
 
-
-
 jpeg(filename=paste(combined.figure.dir,"combined_peak_year.jpg",sep=""),
-     width = 6.5,height = 5,
+     width = 8,height = 5,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.,0),
     mar=c(5.0,2.4,2.4,0.5),
@@ -165,18 +189,18 @@ mtext(expression("Applied Water Volume (gal/min)"),
 mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext("Time (year)",2,line=1)
-legend(0,2030.5,legend.txt[1:4],
+legend(0,2030.5,legend.txt[1:5],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
-legend(170,7.2e6,legend.txt[1:4+ndir/2],              
-       lty=combined.lty[1:4+ndir/2],              
-       col=combined.color[1:4+ndir/2],              
+legend(170,2030.5,legend.txt[1:5+ndir/2],              
+       lty=combined.lty[1:5+ndir/2],              
+       col=combined.color[1:5+ndir/2],              
        lwd=2,bty="n")
 dev.off()
 
 
-
+stop()
 
 
 jpeg(filename=paste(combined.figure.dir,"combined_equal_solute_year.jpg",sep=""),

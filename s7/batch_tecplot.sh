@@ -22,6 +22,9 @@ ulimit -s unlimited
 
 cp $scripts_dir*"lay" $simu_dir$icase/
 cp $scripts_dir"tecplot.mcr" $simu_dir$icase/
+cp $scripts_dir*"layer.dat" $simu_dir$icase/
+
+layer=$simu_dir$icase/"layer.dat"
 
 cd $simu_dir$icase"/tec_data"
 if [ ! -d $figures_dir$icase/ ] ; then
@@ -48,8 +51,7 @@ do
 	sed -i "/$!OPENLAYOUT/c\\$mcr_layout" \
 	    $simu_dir$icase"/tecplot.mcr"
 
-	##	mcr_data="ALTDATALOADINSTRUCTIONS = '\"$iplt\" \"$iplt\"'"
-	mcr_data="ALTDATALOADINSTRUCTIONS = '\"$iplt\" \"$iplt\" \"$iplt\"'"	
+	mcr_data="ALTDATALOADINSTRUCTIONS = '\"$iplt\" \"$layer\"'"	
 	echo $mcr_data
 	sed -i "/ALTDATALOADINSTRUCTIONS/c\\$mcr_data" \
 	    $simu_dir$icase"/tecplot.mcr"

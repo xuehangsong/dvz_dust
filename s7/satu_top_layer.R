@@ -4,9 +4,15 @@
 
 rm(list=ls())
 library(RColorBrewer)
-simu.dir="/pic/scratch/song884/fy2018/s7_1a/"
-scripts.dir="/people/song884/dust/fy2018/s7_1a/scripts/"
-figure.dir="/people/song884/dust/fy2018/s7_1a/figures/"
+case.name = "s7_1a"
+
+simu.dir=paste("/pic/scratch/song884/dust/fy2018/",
+               case.name,"/",sep="")
+figure.dir=paste("/people/song884/dust/fy2018/",
+                 case.name,"/figures/",sep="")
+results.dir = paste("/people/song884/dust/fy2018/",
+                    case.name,"/",sep="")
+scripts.dir="/people/song884/github/dvz_dust/s7/"
 
 source(paste(scripts.dir,"parameter.R",sep=""))
 nvari = 6
@@ -20,12 +26,11 @@ header = read.table(
     sep='"',,
     nrow=1,skip=1)
 header = header[!is.na(header)][-1]
-stop()
 top.satu = list()
 ##----------------------
 
 
-legend.index = c(1,seq(25,200,25))
+legend.index = c(1,seq(50,200,50))
 ## cases=c("r2","r50","r100","r150","r200")
 ## legend.index = c(1,2,3,4,5)
 colors = rainbow(length(cases),end=0.65)
@@ -42,7 +47,7 @@ for (icase in c("base",cases))
 
 
 jpeg(filename=paste(figure.dir,"satu_ts.jpg",sep=""),
-     width = 10,height = 5,
+     width = 8,height = 4,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.6,0),
     mar=c(3.6,3.6,1,1),
@@ -76,9 +81,9 @@ unique.index = match(unique(top.satu[[icase]][,1]),
 lines(top.satu[[icase]][unique.index,1],
       top.satu[[icase]][unique.index,2],
       col="black",lwd=3,lty=2)
-arrows(2018,30000,2018,0,length=0.15,angle=15,code=2,
-       col="black")
-legend("topright",c("base",cases[legend.index]),
+## arrows(2018,30000,2018,0,length=0.15,angle=15,code=2,
+##        col="black")
+legend("topright",c("natural recharge",cases[legend.index]),
        lty=c(2,rep(1,length(legend.index))),
        col=c("black",colors[legend.index]),bty="n",
        lwd=c(3,rep(2,length(legend.index))))       

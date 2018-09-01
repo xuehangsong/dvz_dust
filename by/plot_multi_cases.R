@@ -1,25 +1,32 @@
-#rm(list=ls())
+rm(list=ls())
 cases.dir = c("by_2a",
               "by_1a",
-              "by_5a")
-#              "by_4a")
-cases.dir = paste("/people/song884/dust/fy2018/",cases.dir,sep="")
-combined.figure.dir="/people/song884/dust/fy2018/by_all/"
+              "by_3a",
+              "by_6a",
+              "by_7a",
+              "by_8a",
+              "by_9a",
+              "by_10a"                                                        
+              )
+cases.dir = paste("/people/song884/dust/fy18/",cases.dir,sep="")
+combined.figure.dir="/people/song884/dust/fy18/by_all/"
 
-combined.color = c("red","green","blue","grey",
-                   "red","green","blue","grey")
-combined.lty = c(1,1,1,1)
+combined.color = c("red","green","blue","grey","grey","grey","grey","grey","grey")
+combined.lty = c(1,1,1,1,1,1,1,1,1)
 
 ## legend.txt = c(expression(Low ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
 ##                expression(Mean ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
 ##                expression(High ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"),
 ##                expression(Hete. ~ K[S] ~"/"~theta[S]~"with"~k[d]~"=0"))               
 
-legend.txt = c(expression(Low ~ K[S] ~"/"~theta[S]),
-               expression(Mean ~ K[S] ~"/"~theta[S]),
-               expression(High ~ K[S] ~"/"~theta[S]),
-               expression(Hete. ~ K[S] ~"/"~theta[S])               
-               )
+legend.txt = c(expression("By_L"),
+               expression("By_M"),
+               expression("By_H"),
+               expression("By_R1"),
+               expression("By_R2"),
+               expression("By_R3"),
+               expression("By_R4"),
+               expression("By_R5"))
 
 ndir = length(cases.dir)
 
@@ -110,7 +117,7 @@ mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext(expression("NO"[3]~"- Flux Rate (kg/L)"),
       2,line=1)
-legend("topleft",legend.txt[1:3],
+legend("topleft",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
@@ -174,7 +181,7 @@ mtext(expression("Applied Water Volume (gal/min)"),
 mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext("Time (year)",2,line=1)
-legend("topright",legend.txt[1:3],
+legend("topright",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
@@ -226,7 +233,7 @@ mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext(expression("Equilibration Time (year)"),
       2,line=1)
-legend("topright",legend.txt[1:3],
+legend("topright",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")
@@ -289,7 +296,7 @@ mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
 mtext(expression("Equilibration Time (year)"),
       2,line=1)
-legend("topright",legend.txt[1:3],
+legend("topright",legend.txt[1:ndir],
        lty=combined.lty,
        col=combined.color,
        lwd=2,bty="n")

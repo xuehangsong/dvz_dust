@@ -9,12 +9,10 @@
 ## revised by Xuehang Song 04/10/2018
 
 
-simu_dir="/pic/scratch/song884/dust/fy2018/s7_5a/"
-script_dir="/people/song884/stomp/tools/"
+simu_dir="/pic/projects/dvz/xhs_simus/dust/fy18/by_10a/"
+script_dir="/people/song884/github/constance_tools/"
 
 cd $simu_dir
-
-
 for icase in ss
 do
     echo $icase

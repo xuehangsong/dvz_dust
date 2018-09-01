@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH -A dvz
 #SBATCH -t 03:00:00
-#SBATCH -p short
+#SBATCH -p slurm
 #SBATCH -N 1
 #SBATCH -n 24
 #SBATCH -J tecplot

@@ -1,13 +1,16 @@
 #!/bin/bash -l
+group="s7_3b"
 
-simu_dir="/pic/scratch/song884/dust/fy2018/by_1a/"
-figures_dir="/people/song884/dust/fy2018/by_1a/figures/"
+simu_dir="/pic/projects/dvz/xhs_simus/dust/fy18/"$group/
+figures_dir="/people/song884/dust/fy18/"$group"/figures/"
 
 tools_dir="/people/song884/github/constance_tools/"
-scripts_dir="/people/song884/github/dvz_dust/by/"
+scripts_dir="/people/song884/github/dvz_dust/s7/"
 
-layouts="by_no3_with_layer.lay
-	 by_satu_with_layer.lay"
+layouts="s7_i129_slice_with_layer.lay
+	s7_satu_slice_with_layer.lay"
+
+
 cases=$(cd $simu_dir && ls -d *l*/)
 
 export tools_dir=$tools_dir
@@ -17,7 +20,7 @@ export layouts=$layouts
 export cases=$cases
 export figures_dir=$figures_dir
 
-for icase in $cases base	     
+for icase in $cases base ss 2018
 do
     export icase=$icase
     sbatch $scripts_dir"batch_tecplot.sh" 

@@ -6,19 +6,18 @@ rm(list=ls())
 library(RColorBrewer)
 
 
-case.name = "by_4a"
+case.name = "by_10a"
 
 
 ## define dirs
-simu.dir=paste("/pic/scratch/song884/dust/fy2018/",
+simu.dir=paste("/pic/projects/dvz/xhs_simus/dust/fy18/",
                case.name,"/",sep="")
-figure.dir=paste("/people/song884/dust/fy2018/",
+figure.dir=paste("/people/song884/dust/fy18/",
                  case.name,"/figures/",sep="")
-results.dir = paste("/people/song884/dust/fy2018/",
+results.dir = paste("/people/song884/dust/fy18/",
                     case.name,"/",sep="")
-
-
 scripts.dir="/people/song884/github/dvz_dust/by/"
+
 ## read parameters
 source(paste(scripts.dir,"parameter.R",sep=""))
  
@@ -30,18 +29,18 @@ colors = rev(topo.colors(ncase))
 colors = rainbow(ncase,end=0.65)
 names(colors) = cases
 rate.at = seq(0,500,100)
-truckload.at = seq(0,80,20)*15.14165*1000/crib.area
-truckload.label = seq(0,5,40)
+truckload.label = seq(0,250,50)
+truckload.at = truckload.label*15.14165*1000/crib.area
 year.at = seq(2010,2100,2)
 solute.at = seq(0,3000000,500000)
-lengend.index = c(1,seq(50,500,50))
+lengend.index = c(1,seq(100,250,50))
 
 ## read model spin up data
 icase="2018"
 spinup.data = read.table(
     paste(simu.dir,icase,"/tec_data/surface.dat",sep=""),
     skip=3)
-stop()
+
 ## find the peak year and peak flux of  solute entering the saturated zone
 surface.data = list()
 peak.solute = rep(NA,1+ncase)
@@ -103,8 +102,6 @@ for (icase in c(cases))
 
 
 save(list=ls(),file=paste(results.dir,"results.r",sep=""))
-
-stop()
 
 
 
@@ -311,7 +308,7 @@ dev.off()
 
 ## plot time series of solute entering the groundwater
 jpeg(filename=paste(figure.dir,"solute_ts.jpg",sep=""),
-     width = 6.5,height = 4.5,
+     width = 8,height = 3,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.6,0),
     mar=c(3.6,3.6,1,1),
@@ -321,23 +318,21 @@ unique.index = match(unique(surface.data[[icase]][,1]),
                      surface.data[[icase]][,1])
 plot(surface.data[[icase]][unique.index,1],
      surface.data[[icase]][unique.index,solute.index]/crib.area,
-     ylim=c(0,5000000),
+     ylim=c(0,8000),
      xlim=c(1950,2300),
      type="l",
      lwd=3,
      lty=2,
      xlab="Time(year)",
-     ylab=expression("I-129 Flux Rate (pCi/yr/" ~ m^2 ~")")
+     ylab=expression("NO"[3]~"- Flux Rate (kg/yr/"~ m^2 ~")")
      )
 for (icase in cases)
 {
     unique.index = match(unique(surface.data[[icase]][,1]),
                          surface.data[[icase]][,1])
-    
     lines(surface.data[[icase]][unique.index,1],
           surface.data[[icase]][unique.index,6]/crib.area,
           col=colors[icase],lwd=2)
-
 }
 icase = "base"
 unique.index = match(unique(surface.data[[icase]][,1]),
@@ -345,21 +340,16 @@ unique.index = match(unique(surface.data[[icase]][,1]),
 lines(surface.data[[icase]][unique.index,1],
       surface.data[[icase]][unique.index,6]/crib.area,
       col="black",lwd=3,lty=2)
-
-## arrows(2018,30000,2018,0,length=0.15,angle=15,code=2,
-##        col="black")
-
-legend("topright",c("base",cases[lengend.index]),
+legend("topright",c("natural recharge",cases[lengend.index]),
        lty=c(2,rep(1,length(lengend.index))),
        col=c("black",colors[lengend.index]),bty="n",
        lwd=c(3,rep(2,length(lengend.index))))       
-
 dev.off()
 
 
 ## plot time series of water entering the groundwater
 jpeg(filename=paste(figure.dir,"aqueous_ts.jpg",sep=""),
-     width = 6.5,height = 4.5,
+     width = 8,height = 3,
      units = "in",res = 600, quality = 100)
 par(mgp=c(2.,0.6,0),
     mar=c(3.6,3.6,1,1),
@@ -369,23 +359,21 @@ unique.index = match(unique(surface.data[[icase]][,1]),
                      surface.data[[icase]][,1])
 plot(surface.data[[icase]][unique.index,1],
      surface.data[[icase]][unique.index,wt.flux.index]/crib.area,
-     ylim=c(0,6000),
+     ylim=c(0,200000),
      xlim=c(1950,2300),
      type="l",
      lwd=3,
      lty=2,
      xlab="Time(year)",
-     ylab=expression("Aqueous Flux Rate (mm/yr)")
+     ylab=expression("Aqueous Flux Rate (mm/yr/"~m^2~")"),
      )
 for (icase in cases)
 {
     unique.index = match(unique(surface.data[[icase]][,1]),
                          surface.data[[icase]][,1])
-    
     lines(surface.data[[icase]][unique.index,1],
           surface.data[[icase]][unique.index,wt.flux.index]/crib.area,
           col=colors[icase],lwd=2)
-
 }
 icase = "base"
 unique.index = match(unique(surface.data[[icase]][,1]),
@@ -393,15 +381,10 @@ unique.index = match(unique(surface.data[[icase]][,1]),
 lines(surface.data[[icase]][unique.index,1],
       surface.data[[icase]][unique.index,wt.flux.index]/crib.area,
       col="black",lwd=3,lty=2)
-
-## arrows(2018,100,2018,0,length=0.15,angle=15,code=2,
-##        col="black")
-
-legend("topright",c("base",cases[lengend.index]),
+legend("topright",c("natural recharge",cases[lengend.index]),
        lty=c(2,rep(1,length(lengend.index))),
        col=c("black",colors[lengend.index]),bty="n",
        lwd=c(3,rep(2,length(lengend.index))))       
-
 dev.off()
 
 
@@ -453,7 +436,7 @@ lines(surface.data[[icase]][unique.index,1],
 ## arrows(2018,50,2018,0,length=0.15,angle=15,code=2,
 ##        col="black")
 
-legend("topright",c("base",cases[lengend.index]),
+legend("topright",c("natural recharge",cases[lengend.index]),
        lty=c(2,rep(1,length(lengend.index))),
        col=c("black",colors[lengend.index]),bty="n",
        lwd=c(3,rep(2,length(lengend.index))))       
@@ -508,7 +491,7 @@ lines(surface.data[[icase]][unique.index,1],rep(1,length(unique.index)),
 ## arrows(2018,100,2018,0,length=0.15,angle=15,code=2,
 ##        col="black")
 
-legend("topright",c("base",cases[lengend.index]),
+legend("topright",c("natural recharge",cases[lengend.index]),
        lty=c(2,rep(1,length(lengend.index))),
        col=c("black",colors[lengend.index]),bty="n",
        lwd=c(3,rep(2,length(lengend.index))))       
