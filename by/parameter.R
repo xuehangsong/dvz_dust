@@ -6,7 +6,7 @@
 
 
 rate = 2*(1:250)
-rate.l = c(2,seq(50,500,50))
+rate.l = c(2,25,seq(50,500,50))
 
 base.rate = 3
 

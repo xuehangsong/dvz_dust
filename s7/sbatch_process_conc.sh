@@ -1,6 +1,6 @@
 #!/bin/bash  -l
 #SBATCH -A dvz
-#SBATCH -t 00:30:00
+#SBATCH -t 01:00:00
 #SBATCH -p shared
 #SBATCH -n 1
 #SBATCH -N 1

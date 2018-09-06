@@ -1,6 +1,6 @@
 #!/bin/bash  -l
 #SBATCH -A dvz
-#SBATCH -t 24:00:00
+#SBATCH -t 7-00:00:00
 #SBATCH -p shared
 #SBATCH -n 1
 #SBATCH -J tecplot

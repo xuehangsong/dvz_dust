@@ -10,7 +10,7 @@
 
 rate = 2*(1:200)
 rate.l = c(2,seq(50,400,50))
-
+rate.l = c(2,25,seq(50,400,50))
 
 base.rate = 44
 

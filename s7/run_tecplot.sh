@@ -1,5 +1,5 @@
 #!/bin/bash -l
-group="s7_3b"
+#group="s7_3b"
 
 simu_dir="/pic/projects/dvz/xhs_simus/dust/fy18/"$group/
 figures_dir="/people/song884/dust/fy18/"$group"/figures/"

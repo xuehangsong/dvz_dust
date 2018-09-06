@@ -42,7 +42,7 @@ tec2r <- function(data.file)
     output[[varis[3]]] = array(idata, c(nx,ny,nz))
 
 
-    data = data[-c(1:(3*nx*ny*nz+1))]
+    data = data[-c(1:(3*nx*ny*nz))]
     ## other variable is cell centered
     for (ivari in 1:(length(varis)-3))
     {
@@ -60,4 +60,5 @@ tec2r <- function(data.file)
 
 
 data.file = "/pic/projects/dvz/xhs_simus/dust/fy18/s7_1a/l2/tec_data/2018.66.dat"
+data.file = "/pic/projects/dvz/xhs_simus/dust/fy18/by_1a//l100/tec_data/2026.38.dat"
 tec2r(data.file)

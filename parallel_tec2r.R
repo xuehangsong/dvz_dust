@@ -44,7 +44,7 @@ tec2r <- function(data.file)
     output[[varis[3]]] = array(idata, c(nx,ny,nz))
 
 
-    data = data[-c(1:(3*nx*ny*nz+1))]
+    data = data[-c(1:(3*nx*ny*nz))]
     ## other variable is cell centered
     for (ivari in 1:(length(varis)-3))
     {
@@ -62,10 +62,12 @@ tec2r <- function(data.file)
 #simu.dir="/pic/projects/dvz/xhs_simus/dust/fy18/s7_1a/"    
 simu.dir = getwd()
 
-cases = c(list.files(paste(simu.dir,sep=""),pattern="^l"),
-          ##          list.files(paste(simu.dir,sep=""),pattern="^r"),
-          list.files(paste(simu.dir,sep=""),pattern="^2018"),          
-          list.files(paste(simu.dir,sep=""),pattern="^base"))
+## cases = c(list.files(paste(simu.dir,sep=""),pattern="^l"),
+##           ##         list.files(paste(simu.dir,sep=""),pattern="^r"),
+##           list.files(paste(simu.dir,sep=""),pattern="^2018"),          
+##           list.files(paste(simu.dir,sep=""),pattern="^base"))
+
+cases = "l25"
 
 cases = paste(simu.dir,"/",cases,"/tec_data/",sep="")
 

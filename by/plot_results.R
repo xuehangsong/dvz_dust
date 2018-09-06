@@ -4,9 +4,11 @@ rm(list=ls())
 scripts.dir="/people/song884/github/dvz_dust/by/"
 source(paste(scripts.dir,"parameter.R",sep=""))
 cases = cases[1:50]
+cases.l = cases.l[1:4]
 rate = rate[1:50]
 ncase=length(cases)
 nrate=length(rate)
+ncase.l = length(cases.l)
 
 fig.dir = fig.dir="/people/song884/dust/fy18/by_figures/"
 
@@ -41,9 +43,18 @@ combined.lty = c(1,1,1,1,1,1,1,1,1)
 colors = rainbow(ncase,end=0.65)
 names(colors) = cases
 rate.at = seq(0,100,20)
+
+colors.l = rev(topo.colors(ncase.l))
+colors.l = rainbow(ncase.l,end=0.65)
+names(colors.l) = cases.l
+
+
+rate.at = seq(0,100,20)
+year.at = seq(2010,2100,2)
+mini.ticks = seq(0000,2100,5)
+main.ticks = seq(1950,2100,25)
 truckload.label = seq(0,250,10)
 truckload.at = truckload.label*15.14165*1000/crib.area
-year.at = seq(2010,2100,2)
 solute.at = seq(0,3000000,500000)
 legend.index = c(1,10,20,30,40,50)
 
