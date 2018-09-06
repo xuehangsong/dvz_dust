@@ -47,7 +47,7 @@ to evaluate how water application might impact the contaminent transport in wast
 ## results directory ##
 
 ### tecplot contours ###
-/people/song884/dust/fy18/<case name>/<water application rate value>/
+/people/song884/dust/fy18/case name/water application rate value/
 ### other figures ###
 **/people/song884/dust/fy18/s7_figures/**  
 **/people/song884/dust/fy18/by_figures/**  
