@@ -6,6 +6,7 @@ source(paste(scripts.dir,"parameter.R",sep=""))
 cases = cases[1:50]
 cases.l = cases.l[1:4]
 rate = rate[1:50]
+rate.l = rate.l[1:4]
 ncase=length(cases)
 nrate=length(rate)
 ncase.l = length(cases.l)
@@ -97,10 +98,28 @@ for (igroup in groups)
     }
 }
 
+## find the peak year and peak flux of  i129 entering the saturated zone
+peak.mean.conc = list()
+peak.max.conc = list()
+for (igroup in groups)
+{
+    peak.mean.conc[[igroup]] = c()
+    peak.max.conc[[igroup]] = c()    
+    
+    for (icase in c("base",cases.l))
+    {
+        peak.mean.conc[[igroup]] = c(peak.mean.conc[[igroup]],
+                                   max(all.conc[[igroup]][[icase]][,"crib.mean"],na.rm=TRUE))
+        peak.max.conc[[igroup]] = c(peak.max.conc[[igroup]],
+            max(all.conc[[igroup]][[icase]][,"domain.max"],na.rm=TRUE))        
+    }
+}
 
 
 
-                                        # caculate equilibration time
+
+
+# # caculate equilibration time
 equi.wt.year = list()
 equi.solute.year = list()
 interp.t = seq(2018,3000,0.01)
@@ -131,6 +150,188 @@ for (igroup in groups)
         equi.solute.year[[igroup]] = c(equi.solute.year[[igroup]],interp.t[solute.index])
     }
 }
+
+
+for (igroup in groups)
+{
+    jpeg(filename=paste(fig.dir,igroup,"_conc_domain_max.jpg",sep=""),
+         width = 8,height = 3,
+         units = "in",res = 600, quality = 100)
+    par(mgp=c(2.,0.6,0),
+        mar=c(3.6,3.6,1,1),
+        oma=c(0,0,0,0))
+    icase = "base"
+    plot(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
+         c(all.conc[[igroup]][["2018"]][,"domain.max"],all.conc[[igroup]][["base"]][,"domain.max"]),
+         ylim=c(0,0.2),
+         xlim=c(1950,2100),
+         type="l",
+         lwd=3,
+         lty=2,
+         xlab="Time(year)",
+         ylab=expression("NO"[3]~"[kg/L]")
+         )
+    axis(1,mini.ticks,labels=rep("",length(mini.ticks)),tck=-0.025)
+    axis(1,main.ticks)
+    for (icase in cases.l)
+    {
+        lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][[icase]][,"time"]),
+              c(all.conc[[igroup]][['2018']][,"domain.max"],all.conc[[igroup]][[icase]][,"domain.max"]),
+              col=colors.l[icase],lwd=2)
+    }
+    icase = "base"
+    lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
+          c(all.conc[[igroup]][["2018"]][,"domain.max"],all.conc[[igroup]][["base"]][,"domain.max"]),          
+          col="black",lwd=3,lty=2)
+    legend("topright",c("natural recharge",cases.l),
+           lty=c(2,rep(1,ncase.l)),
+           col=c("black",colors.l),bty="n",
+           lwd=c(3,rep(2,ncase.l)))       
+    dev.off()
+}
+
+for (igroup in groups)
+{
+    jpeg(filename=paste(fig.dir,igroup,"_conc_crib_mean.jpg",sep=""),
+         width = 8,height = 3,
+         units = "in",res = 600, quality = 100)
+    par(mgp=c(2.,0.6,0),
+        mar=c(3.6,3.6,1,1),
+        oma=c(0,0,0,0))
+    icase = "base"
+    plot(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
+         c(all.conc[[igroup]][["2018"]][,"crib.mean"],all.conc[[igroup]][["base"]][,"crib.mean"]),
+         ylim=c(0,2e-4),
+         xlim=c(1950,2100),
+         type="l",
+         lwd=3,
+         lty=2,
+         xlab="Time(year)",
+         ylab=expression("NO"[3]~"[kg/L]")
+         )
+    axis(1,mini.ticks,labels=rep("",length(mini.ticks)),tck=-0.025)
+    axis(1,main.ticks)
+    for (icase in cases.l)
+    {
+        lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][[icase]][,"time"]),
+              c(all.conc[[igroup]][["2018"]][,"crib.mean"],all.conc[[igroup]][[icase]][,"crib.mean"]),
+              col=colors.l[icase],lwd=2)
+    }
+    icase = "base"
+    lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
+          c(all.conc[[igroup]][["2018"]][,"crib.mean"],all.conc[[igroup]][["base"]][,"crib.mean"]),
+          col="black",lwd=3,lty=2)
+    legend("topright",c("natural recharge",cases.l),
+           lty=c(2,rep(1,ncase.l)),
+           col=c("black",colors.l),bty="n",
+           lwd=c(3,rep(2,ncase.l)))       
+    dev.off()
+}
+
+
+jpeg(filename=paste(fig.dir,"combined_peak_mean_conc.jpg",sep=""),
+     width = 8,height = 5,
+     units = "in",res = 600, quality = 100)
+par(mgp=c(2.,0.,0),
+    mar=c(5.0,2.4,2.4,0.5),    
+    oma=c(0,0,0,0))
+plot(c(0,rate.l),peak.mean.conc[[groups[1]]],
+     type="l",
+     lwd=1,
+     lty=1,
+     pch=1,
+     col="white",
+     xlab=NA,
+     ylab=NA,
+     ylim=c(0,2e-4),
+     axes=FALSE,
+     )
+box()
+for (igroup in 1:(ngroup/1))
+{
+    print(igroup)
+    #    points(0,peak.mean.conc[[groups[igroup]]][1],pch=1)
+
+    rate.plot = c(0,rate.l)
+    solute.plot = peak.mean.conc[[groups[igroup]]]
+    lines(rate.plot,solute.plot,
+          col=combined.color[igroup],
+          lwd=2,
+          lty=combined.lty[igroup]
+          )
+}
+axis(1,at=rate.at,labels=rate.at,tck=0.02)
+axis(2,tck=0.02)
+axis(3,at=truckload.at,
+     line=0,col="blue",col.ticks="blue",col.axis="blue",
+     labels=sprintf("%1.1f",truckload.label),tck=0.02)
+axis(1,at=rate.at,line=2.7,col="blue",col.ticks="blue",col.axis="blue",
+     labels=sprintf("%2.1f",rate.at*crib.area/1000*264.172/24/60),tck=0.02)
+mtext("Water Application Rate (mm/day)",1,line=1)
+mtext(expression("Applied Water Volume (gal/min)"),
+      1,line=4,col="blue")
+mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
+      3,line=1,col="blue")
+mtext(expression("NO"[3]~"[kg/L]"),
+      2,line=1)
+legend("bottomright",legend.txt[1:ngroup],
+       lty=combined.lty,
+       col=combined.color,
+       lwd=2,bty="n")
+dev.off()
+
+
+jpeg(filename=paste(fig.dir,"combined_peak_max_conc.jpg",sep=""),
+     width = 8,height = 5,
+     units = "in",res = 600, quality = 100)
+par(mgp=c(2.,0.,0),
+    mar=c(5.0,2.4,2.4,0.5),    
+    oma=c(0,0,0,0))
+plot(c(0,rate.l),peak.max.conc[[groups[1]]],
+     type="l",
+     lwd=1,
+     lty=1,
+     pch=1,
+     col="white",
+     xlab=NA,
+     ylab=NA,
+     ylim=c(0,0.2),
+     axes=FALSE,
+     )
+box()
+for (igroup in 1:(ngroup/1))
+{
+    print(igroup)
+    #    points(0,peak.max.conc[[groups[igroup]]][1],pch=1)
+
+    rate.plot = c(0,rate.l)
+    solute.plot = peak.max.conc[[groups[igroup]]]
+    lines(rate.plot,solute.plot,
+          col=combined.color[igroup],
+          lwd=2,
+          lty=combined.lty[igroup]
+          )
+}
+axis(1,at=rate.at,labels=rate.at,tck=0.02)
+axis(2,tck=0.02)
+axis(3,at=truckload.at,
+     line=0,col="blue",col.ticks="blue",col.axis="blue",
+     labels=sprintf("%1.1f",truckload.label),tck=0.02)
+axis(1,at=rate.at,line=2.7,col="blue",col.ticks="blue",col.axis="blue",
+     labels=sprintf("%2.1f",rate.at*crib.area/1000*264.172/24/60),tck=0.02)
+mtext("Water Application Rate (mm/day)",1,line=1)
+mtext(expression("Applied Water Volume (gal/min)"),
+      1,line=4,col="blue")
+mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
+      3,line=1,col="blue")
+mtext(expression("NO"[3]~"[kg/L]"),
+      2,line=1)
+legend("bottomright",legend.txt[1:ngroup],
+       lty=combined.lty,
+       col=combined.color,
+       lwd=2,bty="n")
+dev.off()
+
 
 jpeg(filename=paste(fig.dir,"combined_peak_flux.jpg",sep=""),
      width = 8,height = 5,
@@ -412,6 +613,8 @@ for (igroup in groups)
          xlab="Time(year)",
          ylab=expression("NO"[3]~"- Flux Rate (kg/yr/"~ m^2 ~")")
          )
+    axis(1,mini.ticks,labels=rep("",length(mini.ticks)),tck=-0.025)
+    axis(1,main.ticks)
     for (icase in cases)
     {
         time.plot = c(all.surface[[igroup]][["2018"]][,"time"],
@@ -464,6 +667,8 @@ for (igroup in groups)
          xlab="Time(year)",
          ylab=expression("Aqueous Flux Rate (mm/yr/"~m^2~")"),
          )
+    axis(1,mini.ticks,labels=rep("",length(mini.ticks)),tck=-0.025)
+    axis(1,main.ticks)
     for (icase in cases)
     {
         time.plot = c(all.surface[[igroup]][["2018"]][,"time"],

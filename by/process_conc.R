@@ -2,8 +2,8 @@
 
 rm(list=ls())
 
-simu.dir="/pic/projects/dvz/xhs_simus/dust/fy18/by_1a/"
-#simu.dir="./"
+#simu.dir="/pic/projects/dvz/xhs_simus/dust/fy18/by_1a/"
+simu.dir="./"
 
 scripts.dir="/people/song884/github/dvz_dust/by/"
 
@@ -15,6 +15,8 @@ cases = c(#list.files(paste(simu.dir,sep=""),pattern="^r"),
     list.files(paste(simu.dir,sep=""),pattern="^l"),
     list.files(paste(simu.dir,sep=""),pattern="^2018$"),          
     list.files(paste(simu.dir,sep=""),pattern="^base$"))
+
+cases = c("l2","l25","l50","l100","base","2018")
 
 ## point to tecplot files
 cases.dir = paste(simu.dir,"/",cases,"/tec_data/",sep="")
