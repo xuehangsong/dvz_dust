@@ -1,7 +1,7 @@
 #!/bin/bash  -l
 #SBATCH -A dvz
-#SBATCH -t 7-00:00:00
-#SBATCH -p shared
+#SBATCH -t 3:00:00
+#SBATCH -p short
 #SBATCH -n 1
 #SBATCH -J tecplot
 #SBATCH --mail-type=ALL

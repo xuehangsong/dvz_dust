@@ -1420,7 +1420,7 @@ $!ATTACHTEXT
     X = 54.29678044057143
     Y = 93.87915098699382
     }
-  TEXT = 'Aqueoue I-129 Concentration (pCi/L)'
+  TEXT = 'Aqueous I-129 Concentration (pCi/L)'
 $!ATTACHTEXT 
   ANCHORPOS
     {
@@ -1439,7 +1439,7 @@ $!ATTACHTEXT
     {
     HEIGHT = 20
     }
-  TEXT = 'Time = &(SOLUTIONTIME) yr'
+  TEXT = 'Time = &(SOLUTIONTIME%.0f) yr'
 $!ATTACHTEXT 
   ANCHORPOS
     {

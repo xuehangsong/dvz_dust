@@ -11,6 +11,9 @@ ncase=length(cases)
 nrate=length(rate)
 ncase.l = length(cases.l)
 
+cases.l.legend = paste(rate.l,"mm/day")
+cases.legend = paste(rate,"mm/day")
+
 fig.dir = fig.dir="/people/song884/dust/fy18/s7_figures/"
 
 ## list cases
@@ -205,7 +208,7 @@ for (igroup in groups)
     lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
           c(all.conc[[igroup]][["2018"]][,"crib.mean"],all.conc[[igroup]][["base"]][,"crib.mean"]),
           col="black",lwd=3,lty=2)
-    legend("topright",c("natural recharge",cases.l),
+    legend("topright",c("natural recharge",cases.l.legend),
            lty=c(2,rep(1,ncase.l)),
            col=c("black",colors.l),bty="n",
            lwd=c(3,rep(2,ncase.l)))       
@@ -244,7 +247,7 @@ for (igroup in groups)
     lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
           c(all.conc[[igroup]][["2018"]][,"domain.mean"],all.conc[[igroup]][["base"]][,"domain.mean"]),
           col="black",lwd=3,lty=2)
-    legend("topright",c("natural recharge",cases.l),
+    legend("topright",c("natural recharge",cases.l.legend),
            lty=c(2,rep(1,ncase.l)),
            col=c("black",colors.l),bty="n",
            lwd=c(3,rep(2,ncase.l)))       
@@ -283,7 +286,7 @@ for (igroup in groups)
     lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
           c(all.conc[[igroup]][["2018"]][,"domain.max"],all.conc[[igroup]][["base"]][,"domain.max"]),          
           col="black",lwd=3,lty=2)
-    legend("topright",c("natural recharge",cases.l),
+    legend("topright",c("natural recharge",cases.l.legend),
            lty=c(2,rep(1,ncase.l)),
            col=c("black",colors.l),bty="n",
            lwd=c(3,rep(2,ncase.l)))       
@@ -322,7 +325,7 @@ for (igroup in groups)
     lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
           c(all.conc[[igroup]][["2018"]][,"crib.max"],all.conc[[igroup]][["base"]][,"crib.max"]),          
           col="black",lwd=3,lty=2)
-    legend("topright",c("natural recharge",cases.l),
+    legend("topright",c("natural recharge",cases.l.legend),
            lty=c(2,rep(1,ncase.l)),
            col=c("black",colors.l),bty="n",
            lwd=c(3,rep(2,ncase.l)))       
