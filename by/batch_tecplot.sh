@@ -1,9 +1,9 @@
 #!/bin/bash  -l
 #SBATCH -A dvz
-#SBATCH -t 7-00:00:00
+#SBATCH -t 2-00:00:00
 #SBATCH -p shared
-#SBATCH -n 1
-#SBATCH -J tecplot
+#SBATCH -N 1
+#SBATCH -J tec
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=xuehang.song@pnnl.gov
 

@@ -10,6 +10,9 @@ rate.l = rate.l[1:4]
 ncase=length(cases)
 nrate=length(rate)
 ncase.l = length(cases.l)
+cases.l.legend = paste(rate.l,"mm/day")
+cases.legend = paste(rate,"mm/day")
+
 
 fig.dir = fig.dir="/people/song884/dust/fy18/by_figures/"
 
@@ -207,7 +210,8 @@ for (igroup in groups)
          lwd=3,
          lty=2,
          xlab="Time(year)",
-         ylab=expression("NO"[3]~"[kg/L]")
+###         ylab=expression("NO"[3]~"[kg/L]")
+         ylab=expression("Contaminant Conc. (m/v)")         
          )
     axis(1,mini.ticks,labels=rep("",length(mini.ticks)),tck=-0.025)
     axis(1,main.ticks)
@@ -221,7 +225,8 @@ for (igroup in groups)
     lines(c(all.conc[[igroup]][["2018"]][,"time"],all.conc[[igroup]][["base"]][,"time"]),
           c(all.conc[[igroup]][["2018"]][,"crib.mean"],all.conc[[igroup]][["base"]][,"crib.mean"]),
           col="black",lwd=3,lty=2)
-    legend("topright",c("natural recharge",cases.l),
+#    legend("topright",c("natural recharge",cases.l),
+    legend("topright",c("natural recharge",cases.l.legend),           
            lty=c(2,rep(1,ncase.l)),
            col=c("black",colors.l),bty="n",
            lwd=c(3,rep(2,ncase.l)))       
@@ -272,7 +277,9 @@ mtext(expression("Applied Water Volume (gal/min)"),
       1,line=4,col="blue")
 mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
-mtext(expression("NO"[3]~"[kg/L]"),
+## mtext(expression("NO"[3]~"[kg/L]"),
+##       2,line=1)
+mtext(expression("Contaminant Conc. (m/v)"),
       2,line=1)
 legend("bottomright",legend.txt[1:ngroup],
        lty=combined.lty,
@@ -388,7 +395,9 @@ mtext(expression("Applied Water Volume (gal/min)"),
       1,line=4,col="blue")
 mtext(expression("Truckloads/day (1 truck = 4000 gal)"),
       3,line=1,col="blue")
-mtext(expression("NO"[3]~"- Flux Rate (kg/L)"),
+## mtext(expression("NO"[3]~"- Flux Rate (kg/L)"),
+##       2,line=1)
+mtext(expression("Contaminant Flux Rate (m/T/"~L^2 ~")"),
       2,line=1)
 legend("topleft",legend.txt[1:ngroup],
        lty=combined.lty,

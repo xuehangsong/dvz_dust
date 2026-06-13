@@ -22,7 +22,8 @@ export layouts=$layouts
 export cases=$cases
 export figures_dir=$figures_dir
 
-for icase in $cases base ss 2018
+#for icase in $cases base ss 2018
+for icase in l25
 do
     export icase=$icase
     sbatch $scripts_dir"batch_tecplot.sh" 
